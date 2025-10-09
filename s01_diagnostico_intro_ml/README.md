@@ -7,4 +7,3 @@
 - [ ] Notebook principal (notebooks/S01.ipynb)
 - [ ] Funciones (src/utils.py)
 - [ ] Resultados (outputs/)
-- [ ] Diapositivas (slides/)
