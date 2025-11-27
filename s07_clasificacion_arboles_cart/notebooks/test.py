@@ -15,7 +15,7 @@ except FileNotFoundError:
     exit()
 
 # Seleccionamos las 2 variables principales
-feature_cols = ['Daily Time Spent on Site', 'Daily Internet Usage']
+feature_cols = ['Age', 'Male']
 target_col = 'Clicked on Ad'
 
 X = df[feature_cols].values
@@ -41,7 +41,7 @@ cm_background = ListedColormap(['#FFFF99', '#99FF99'])
 
 
 # --- 3. Configurar Ventana ---
-fig, ax = plt.subplots(figsize=(13, 8), facecolor='white')
+fig, ax = plt.subplots(figsize=(13, 7), facecolor='white')
 plt.subplots_adjust(left=0.1, bottom=0.25)
 
 # Graficar los puntos usando el nuevo mapa de colores cm_points
