@@ -18,13 +18,13 @@ if os.path.exists(file_path):
 else:
     print("No encuentro 'data/advertising.xls'. Usando datos de ejemplo de internet...")
 
-# --- 2. ENTRENAMIENTO DEL MODELO ---
+# --- 2. ASIGNACIÓN DE VARIABLES ---
 # Seleccionamos las columnas EXACTAS que me mostraste
 features = ['Daily Time Spent on Site', 'Age', 'Area Income', 'Daily Internet Usage']
 X = df[features]
 y = df['Clicked on Ad']
 
-# Pipeline: Escalado + Regresión Logística
+# EDA: Escalado + Regresión Logística
 # (El escalado es vital porque 'Income' es 60,000 y 'Age' es 30)
 model = make_pipeline(StandardScaler(), LogisticRegression())
 model.fit(X, y)
@@ -101,10 +101,12 @@ app.layout = dbc.Container([
 # --- 5. CALLBACKS (Lógica) ---
 @app.callback(
     Output('gauge-chart', 'figure'),
-    [Input('slider-time', 'value'),
-     Input('slider-age', 'value'),
-     Input('slider-income', 'value'),
-     Input('slider-internet', 'value')]
+    [
+        Input('slider-time', 'value'),
+        Input('slider-age', 'value'),
+        Input('slider-income', 'value'),
+        Input('slider-internet', 'value')
+    ]
 )
 def update_gauge(time, age, income, internet):
     # 1. Crear dataframe con los datos del slider

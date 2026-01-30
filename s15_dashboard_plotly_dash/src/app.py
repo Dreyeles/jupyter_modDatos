@@ -8,7 +8,13 @@ from sklearn import metrics
 
 #### DATA
 
+inmob_raw = pd.read_csv('../data/housing.csv')
+
 inmob = pd.read_csv('../data/data_procesada.csv', index_col=0)
+
+### PREPROCESAMIENTO DE DATOS
+
+
 
 #### DEFINIR APP
 
@@ -47,8 +53,9 @@ controls = [
             ),
         ]
     ),
-    dbc.Button("Entrenar modelo OLS", color="primary",
-            id="button-train", n_clicks=0),
+    dbc.Row(
+        dbc.Button("Entrenar modelo OLS", color="primary", id="button-train", n_clicks=0), style={"margin-top": "20px"}
+    )
 ]
 
 #### LAYOUT
@@ -63,11 +70,17 @@ app.layout = dbc.Container(
         html.Hr(),
         dbc.Row(
             [
+                dbc.Col(html.P("ANtes del preprocesamiento"), md=1, style={"text-align": "center", "margin-top": "20px"}),
+                dbc.Col(dcc.Graph(id="avp-graph2", style={"height": "500px"}), md=12),
+            ]
+        ),
+        dbc.Row(
+            [
                 dbc.Col(dbc.Card(controls, body=True),md=3),
                 dbc.Col(dcc.Graph(id="avp-graph", style={"height": "500px"}), md=4),
-                dbc.Col(dcc.Graph(id="coef-graph",
-                        style={"height": "800px"}), md=5),
-            ]
+                dbc.Col(dcc.Graph(id="coef-graph", style={"height": "600px"}), md=4),
+                dbc.Col(html.P("Por Rafael"), md=1, style={"text-align": "center", "margin-top": "20px"}),
+            ], style={"margin-top": "30px"}
         ),
     ],
     style={"margin": "auto"},
@@ -79,6 +92,7 @@ app.layout = dbc.Container(
     [
         Output(component_id="avp-graph", component_property="figure"),
         Output(component_id="coef-graph", component_property="figure"),
+        Output(component_id="avp-graph2", component_property="figure"),
     ],
     [
         Input(component_id="button-train", component_property="n_clicks")
@@ -97,7 +111,7 @@ def sample_and_train(input1, state1, state2):
     df = inmob.loc[conds, :]
 
     # Muestreo de entrenamiento y evaluacion
-    X = df.drop(columns='median_house_value')
+    X = df.drop(columns=['median_house_value', 'latitude', 'longitude'])
     y = df.loc[:, 'median_house_value']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -113,7 +127,6 @@ def sample_and_train(input1, state1, state2):
     coef_fig = px.bar(
         y=X_test.columns,
         x=model.coef_,
-        orientation="h",
         labels={"x": "Peso en la prediccion", "y": "Variables"},
         title="Importancia de las variables en la prediccion del precio",
     )
@@ -130,7 +143,9 @@ def sample_and_train(input1, state1, state2):
         type="line", x0=y_test.min(), y0=y_test.min(), x1=y_test.max(), y1=y_test.max()
     )
 
-    return avp_fig, coef_fig
+    avp_fig2 = avp_fig
+
+    return avp_fig, coef_fig, avp_fig2
 
 if __name__ == "__main__":
     app.run(debug=True)
