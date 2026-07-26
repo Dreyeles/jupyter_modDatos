@@ -18,7 +18,7 @@ inmob = pd.read_csv('../data/data_procesada.csv', index_col=0)
 
 #### DEFINIR APP
 
-app = Dash(__name__,  external_stylesheets=[dbc.themes.DARKLY])
+app = Dash(__name__,  external_stylesheets=[dbc.themes.PULSE])
 app.title = "ML Dashboard"
 server = app.server
 
@@ -43,7 +43,7 @@ controls = [
     ),
     dbc.Row(
         [
-            dbc.Label('Antiguedad media de los inmuebles (anos)'),
+            dbc.Label('Antiguedad media de los inmuebles (años)'),
             dcc.RangeSlider(
                 id='antiguedad',
                 min=10,
@@ -70,17 +70,14 @@ app.layout = dbc.Container(
         html.Hr(),
         dbc.Row(
             [
-                dbc.Col(html.P("ANtes del preprocesamiento"), md=1, style={"text-align": "center", "margin-top": "20px"}),
-                dbc.Col(dcc.Graph(id="avp-graph2", style={"height": "500px"}), md=12),
-            ]
+                dbc.Col(dbc.Card(controls, body=True),md=6),
+            ], style={"margin-top": "30px", "margin-bottom": "30px"}
         ),
         dbc.Row(
             [
-                dbc.Col(dbc.Card(controls, body=True),md=3),
-                dbc.Col(dcc.Graph(id="avp-graph", style={"height": "500px"}), md=4),
-                dbc.Col(dcc.Graph(id="coef-graph", style={"height": "600px"}), md=4),
-                dbc.Col(html.P("Por Rafael"), md=1, style={"text-align": "center", "margin-top": "20px"}),
-            ], style={"margin-top": "30px"}
+                dbc.Col(dcc.Graph(id="avp-graph", style={"height": "600px"}), md=6),
+                dbc.Col(dcc.Graph(id="coef-graph", style={"height": "600px"}), md=6),
+            ], style={"margin-bottom": "50px"}
         ),
     ],
     style={"margin": "auto"},
@@ -92,7 +89,6 @@ app.layout = dbc.Container(
     [
         Output(component_id="avp-graph", component_property="figure"),
         Output(component_id="coef-graph", component_property="figure"),
-        Output(component_id="avp-graph2", component_property="figure"),
     ],
     [
         Input(component_id="button-train", component_property="n_clicks")
@@ -143,9 +139,7 @@ def sample_and_train(input1, state1, state2):
         type="line", x0=y_test.min(), y0=y_test.min(), x1=y_test.max(), y1=y_test.max()
     )
 
-    avp_fig2 = avp_fig
-
-    return avp_fig, coef_fig, avp_fig2
+    return avp_fig, coef_fig
 
 if __name__ == "__main__":
     app.run(debug=True)
