@@ -1,4 +1,3 @@
-
 from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
 import plotly.graph_objects as go
@@ -10,7 +9,7 @@ import os
 
 # --- 1. CARGA DE DATOS ---
 # Intentamos cargar tu archivo local
-file_path = '../data/advertising.xls'
+file_path = '../datasets/advertising.xls'
 
 if os.path.exists(file_path):
     df = pd.read_csv(file_path)
@@ -59,7 +58,7 @@ app.layout = dbc.Container([
                     dcc.Slider(id='slider-income', 
                                min=20000, max=80000, step=1000, 
                                value=60000,
-                               marks={20000:'$20k', 50000:'$50k', 80000:'$80k'}),
+                               marks={20000:'$20k', 30000:'$30k', 50000:'$50k', 60000:'$60k', 80000:'$80k'}),
                     html.Br(),
 
                     # 3. Tiempo en Sitio
@@ -77,14 +76,14 @@ app.layout = dbc.Container([
                                value=200,
                                marks={100:'100m', 200:'200m', 275:'275m'}),
                 ])
-            ], color="dark", inverse=True, style={"border": "1px solid #444"})
-        ], md=6),
+            ], color="ligth", style={"background-color": "#0b1220", "border": "1px solid #444"})
+        ], md=4),
 
         # --- COLUMNA DERECHA: RESULTADO (VELOCÍMETRO) ---
         dbc.Col([
             dbc.Card(
                 dbc.CardBody(
-                    dcc.Graph(id='gauge-chart', style={'height': '350px'}),
+                    dcc.Graph(id='gauge-chart', style={'height': '400px'}),
                     style={"padding": "1rem"}
                 ),
                 style={
@@ -94,7 +93,7 @@ app.layout = dbc.Container([
                     "borderRadius": "6px"
                 }
             )
-        ], md=6)
+        ], md=8)
     ])
 ], fluid=True)
 
