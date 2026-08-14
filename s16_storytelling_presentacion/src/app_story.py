@@ -124,7 +124,11 @@ app.layout = dbc.Container([
 @app.callback(
     Output('prediction-output', 'children'),
     Input('btn-predict', 'n_clicks'),
-    [State('slider-income', 'value'), State('slider-age', 'value'), State('slider-rooms', 'value')]
+    [
+        State('slider-income', 'value'), 
+        State('slider-age', 'value'), 
+        State('slider-rooms', 'value')
+    ]
 )
 def predecir(n_clicks, income, age, rooms):
     if not n_clicks: return html.H3("👈 Configura la simulación", className="text-center text-muted mt-5")
