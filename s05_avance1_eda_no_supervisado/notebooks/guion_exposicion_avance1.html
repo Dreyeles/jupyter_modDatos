@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Guion de Exposición Oral (6 Integrantes) - Avance 1 MPD</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 1.5cm 1.6cm 1.6cm 1.6cm;
+      @bottom-right {
+        content: counter(page);
+      }
+    }
+    
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      background-color: #ffffff;
+      line-height: 1.45;
+      font-size: 10pt;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* HEADER DOCUMENTAL */
+    .doc-header {
+      border-bottom: 3px solid #182b49;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .doc-header h1 {
+      font-size: 17pt;
+      color: #182b49;
+      margin: 0 0 3px 0;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .doc-header .subtitle {
+      font-size: 10.5pt;
+      color: #2563eb;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .meta-box {
+      text-align: right;
+      font-size: 8.5pt;
+      color: #64748b;
+    }
+
+    .meta-badge {
+      display: inline-block;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      font-size: 8pt;
+    }
+
+    /* MATRIZ DE REPARTO */
+    .reparto-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      font-size: 8.5pt;
+    }
+
+    .reparto-item {
+      background: #ffffff;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border-left: 3px solid #2563eb;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .reparto-item strong {
+      color: #182b49;
+      font-size: 9pt;
+      display: block;
+    }
+
+    .reparto-item span {
+      color: #64748b;
+    }
+
+    /* TARJETA DE DIAPOSITIVA */
+    .slide-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-bottom: 18px;
+      page-break-inside: avoid;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+
+    .slide-topbar {
+      background: #182b49;
+      color: #ffffff;
+      padding: 7px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-num {
+      font-size: 8.5pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #93c5fd;
+    }
+
+    .slide-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #ffffff;
+      margin-left: 6px;
+    }
+
+    .speaker-pill {
+      background: #2563eb;
+      color: #ffffff;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 8.5pt;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      border: 1px solid rgba(255,255,255,0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .slide-body {
+      padding: 12px 14px;
+    }
+
+    .context-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 8.5pt;
+      background: #f8fafc;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid #f1f5f9;
+    }
+
+    .context-item {
+      flex: 1;
+    }
+
+    .context-item strong {
+      color: #334155;
+      display: block;
+      font-size: 7.5pt;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    /* SPEECH BOX */
+    .speech-box {
+      background: #f0fdf4;
+      border-left: 4px solid #16a34a;
+      padding: 9px 12px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 10px;
+    }
+
+    .speech-title {
+      font-size: 7.5pt;
+      font-weight: 800;
+      color: #15803d;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
+    }
+
+    .speech-text {
+      font-size: 9.5pt;
+      color: #14532d;
+      font-style: italic;
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .speech-text strong {
+      font-style: normal;
+      color: #052e16;
+    }
+
+    /* TRANSICION CUE */
+    .transition-cue {
+      background: #fffbeb;
+      border: 1px dashed #f59e0b;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 8.5pt;
+      color: #b45309;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    /* JURY QA BOX */
+    .jury-box {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+      padding: 7px 11px;
+      border-radius: 0 6px 6px 0;
+      font-size: 8pt;
+    }
+
+    .jury-title {
+      font-weight: 800;
+      color: #1d4ed8;
+      text-transform: uppercase;
+      font-size: 7.5pt;
+      margin-bottom: 2px;
+    }
+
+    .jury-q {
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 2px;
+    }
+
+    .jury-a {
+      color: #334155;
+      margin: 0;
+    }
+
+    .page-break {
+      page-break-after: always;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ENCABEZADO PRINCIPAL -->
+  <div class="doc-header">
+    <div>
+      <div class="meta-badge">GUION DE EXPOSICIÓN ORAL • REPARTO EQUITATIVO (6 INTEGRANTES)</div>
+      <h1>Modelado y Presentación de Datos</h1>
+      <p class="subtitle">Avance 1: Aprendizaje No Supervisado | Caso Hospital María Auxiliadora</p>
+    </div>
+    <div class="meta-box">
+      <strong>Ciclo:</strong> 2026-II (Ciclo VI)<br>
+      <strong>Tiempo Total:</strong> 12 - 15 Minutos (~2:15 min/persona)<br>
+      <strong>Población:</strong> 97,546 Pacientes
+    </div>
+  </div>
+
+  <!-- REPARTO DE EQUIPO -->
+  <div class="reparto-box">
+    <div class="reparto-item">
+      <strong>1. Drey (Diapositivas 01 y 02)</strong>
+      <span>Portada, Problema Clínico y Objetivos</span>
+    </div>
+    <div class="reparto-item">
+      <strong>2. Diego (Diapositivas 03 y 04)</strong>
+      <span>Feature Engineering y EDA Univariado</span>
+    </div>
+    <div class="reparto-item">
+      <strong>3. Steven (Diapositivas 05 y 06)</strong>
+      <span>EDA Multivariado y Calidad de Datos</span>
+    </div>
+    <div class="reparto-item">
+      <strong>4. Daniel (Diapositivas 07 y 08)</strong>
+      <span>Estandarización y Selección de K Óptimo</span>
+    </div>
+    <div class="reparto-item">
+      <strong>5. Rosa (Diapositivas 09 y 10)</strong>
+      <span>PCA 2D y 4 Arquetipos de Pacientes</span>
+    </div>
+    <div class="reparto-item">
+      <strong>6. Brillite (Diapositivas 11 y 12)</strong>
+      <span>Conclusiones, Avance 2 y Cierre</span>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- EXPOSITOR 1: DREY (DIAPOSITIVAS 1 Y 2)                  -->
+  <!-- ======================================================= -->
+
+  <!-- SLIDE 1 -->
+  <div class="slide-card">
+    <div class="slide-topbar">
+      <div>
+        <span class="slide-num">Diapositiva 01</span>
+        <span class="slide-title">Portada e Introducción Institucional</span>
+      </div>
+      <span class="speaker-pill">👤 Drey</span>
+    </div>
+    <div class="slide-body">
+      <div class="context-row">
+        <div class="context-item">
+          <strong>En Pantalla</strong>
+          Título oficial, caso María Auxiliadora, nombres del equipo y ciclo académico 2026-II.
+        </div>
+        <div class="context-item">
+          <strong>Tiempo Asignado</strong>
+          0:45 min | Tono: Seguro, formal y cordial.
+        </div>
+      </div>
+      <div class="speech-box">
+        <div class="speech-title">🎙️ Guion Verbal (Drey se presenta al inicio):</div>
+        <p class="speech-text">
+          "Buenas noches, profesor y compañeros. <strong>Mi nombre es Drey</strong>, y el día de hoy nuestro equipo presenta el <strong>Avance 1 del proyecto de Modelado y Presentación de Datos</strong>. En esta investigación abordamos una problemática real y crítica en la salud pública de Lima Sur: la <strong>segmentación de pacientes del Hospital María Auxiliadora</strong> mediante algoritmos de aprendizaje no supervisado. A lo largo de la presentación demostraremos cómo transformamos más de 450,000 registros transaccionales en <strong>cuatro grupos estratégicos</strong> utilizando modelos como <strong>K-Means, PCA y Clustering Jerárquico</strong> para mitigar el ausentismo y optimizar los recursos hospitalarios."
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide-card">
+    <div class="slide-topbar">
+      <div>
+        <span class="slide-num">Diapositiva 02</span>
+        <span class="slide-title">Criterio 1: Contexto Hospitalario y Necesidad Analítica</span>
+      </div>
+      <span class="speaker-pill">👤 Drey</span>
+    </div>
+    <div class="slide-body">
+      <div class="context-row">
+        <div class="context-item">
+          <strong>En Pantalla</strong>
+          4 KPIs de dolor: 450k citas, 31.8% No-Show, 19.8 días de espera y carencia de segmentación.
+        </div>
+        <div class="context-item">
+          <strong>Tiempo Asignado</strong>
+          1:15 min | Tono: Enérgico, enfatizando las cifras de impacto.
+        </div>
+      </div>
+      <div class="speech-box">
+        <div class="speech-title">🎙️ Guion Verbal de Drey:</div>
+        <p class="speech-text">
+          "El Hospital María Auxiliadora soporta una demanda masiva en consulta externa; sin embargo, enfrenta dos cuellos de botella muy graves: primero, una <strong>tasa de ausentismo del 31.8%</strong>, lo que implica que <strong>casi 1 de cada 3 citas se pierde</strong>, dejando horas médicas especializadas inutilizadas que nunca se recuperan. Segundo, una demora promedio de <strong>19.8 días entre la solicitud y la atención</strong>, con picos que alcanzan casi 3 meses. El origen del problema es una <strong>gestión homogénea e indiferenciada</strong>: el hospital programa citas bajo las mismas reglas para un paciente crónico complejo que para un chequeo de rutina. Por ello, nuestro objetivo cuantitativo es segmentar a <strong>97,546 pacientes únicos</strong> para personalizar la gestión de citas y reducir el abandono."
+        </p>
+      </div>
+      <div class="transition-cue">
+        🗣️ <strong>Frase de Pase de Drey:</strong> "A continuación, <strong>le paso la palabra a mi siguiente compañero</strong> para continuar con la exposición."
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ======================================================= -->
+  <!-- EXPOSITOR 2: DIEGO (DIAPOSITIVAS 3 Y 4)                 -->
+  <!-- ======================================================= -->
+
+  <!-- SLIDE 3 -->
+  <div class="slide-card">
+    <div class="slide-topbar">
+      <div>
+        <span class="slide-num">Diapositiva 03</span>
+        <span class="slide-title">Criterio 2: Carga de Datos y Feature Engineering (RFM Clínico)</span>
+      </div>
+      <span class="speaker-pill">👤 Diego</span>
+    </div>
+    <div class="slide-body">
+      <div class="context-row">
+        <div class="context-item">
+          <strong>En Pantalla</strong>
+          Diagrama del pipeline transaccional a paciente y tabla de las 10 variables numéricas.
+        </div>
+        <div class="context-item">
+          <strong>Tiempo Asignado</strong>
+          1:15 min | Tono: Técnico, destacando el cumplimiento de la rúbrica.
+        </div>
+      </div>
+      <div class="speech-box">
+        <div class="speech-title">🎙️ Guion Verbal (Diego se presenta al inicio):</div>
+        <p class="speech-text">
+          "Buenas noches a todos, <strong>mi nombre es Diego</strong>. Para cumplir rigurosamente con los requisitos de la rúbrica del curso, convertimos el registro transaccional de citas en una matriz consolidada a nivel de paciente individual, estructurando un <strong>RFM clínico</strong>. Analizamos a <strong>97,546 pacientes únicos</strong>, superando por casi diez veces el mínimo exigido de 10,000 registros. Construimos un vector de <strong>10 variables 100% numéricas continuas y ratios de comportamiento</strong>: edad, sexo, total de citas, gasto total, gasto promedio, días de espera promedio, tasa efectiva de asistencia y ratios de aseguramiento y adopción de teleconsulta."
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="slide-card">
+    <div class="slide-topbar">
+      <div>
+        <span class="slide-num">Diapositiva 04</span>
+        <span class="slide-title">Criterio 2: EDA Univariado (Distribución y Dispersión)</span>
+      </div>
+      <span class="speaker-pill">👤 Diego</span>
+    </div>
+    <div class="slide-body">
+      <div class="context-row">
+        <div class="context-item">
+          <strong>En Pantalla</strong>
+          Gráficos <code>eda_univariado_histogramas.png</code> y <code>eda_univariado_boxplots.png</code>.
+        </div>
+        <div class="context-item">
+          <strong>Tiempo Asignado</strong>
+          1:15 min | Tono: Analítico y descriptivo.
+        </div>
+      </div>
+      <div class="speech-box">
+        <div class="speech-title">🎙️ Guion Verbal de Diego:</div>
+        <p class="speech-text">
+          "Al analizar el comportamiento univariado de estas variables encontramos hallazgos esenciales: la variable <strong>edad muestra una clara distribución bimodal</strong>, con picos marcados en niños menores de 10 años y adultos mayores entre 60 y 75 años, registrando una mediana de 41 años. Por otro lado, variables operativas como los días de espera y el gasto total presentan una <strong>fuerte asimetría positiva con colas pesadas</strong> hacia la derecha. Se comprueba un <strong>efecto Pareto evidente</strong>: el 80% de los usuarios tiene una baja frecuencia de 1 o 2 consultas anuales, mientras que una fracción de pacientes crónicos acumula más de 30 citas, generando valores extremos que debemos tratar cuidadosamente."
+        </p>
+      </div>
+      <div class="transition-cue">
+        🗣️ <strong>Frase de Pase de Diego:</strong> "A continuación, <strong>le paso la palabra a mi siguiente compañero</strong>."
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ======================================================= -->
+  <!-- EXPOSITOR 3: STEVEN (DIAPOSITIVAS 5 Y 6)                -->
+  <!-- ======================================================= -->
+
+  <!-- SLIDE 5 -->
+  <div class="slide-card">
+    <div class="slide-topbar">
+      <div>
+        <span class="slide-num">Diapositiva 05</span>
+        <span class="slide-title">Criterio 2: EDA Multivariado (Correlaciones y Dispersión)</span>
+      </div>
+      <span class="speaker-pill">👤 Steven</span>
+    </div>
+    <div class="slide-body">
+      <div class="context-row">
+        <div class="context-item">
+          <strong>En Pantalla</strong>
+          Heatmap triangular de Pearson (<code>eda_multivariado_heatmap.png</code>) y scatter plot bivariado.
+        </div>
+        <div class="context-item">
+          <strong>Tiempo Asignado</strong>
+          1:15 min | Tono: Persuasivo, fundamentando la causa del abandono.
+        </div>
+      </div>
+      <div class="speech-box">
+        <div class="speech-title">🎙️ Guion Verbal (Steven se presenta al inicio):</div>
+        <p class="speech-text">
+          "Buenas noches, profesor y jurado, <strong>mi nombre es Steven</strong>. Al explorar la matriz de correlación multivariada comprobamos dos relaciones determinantes: primero, una <strong>asociación lineal positiva muy fuerte (r = 0.85)</strong> entre el total de citas y el gasto acumulado, confirmando que la recurrencia médica tracciona directamente el costo del paciente. Segundo, y fundamental para la gestión: identificamos una <strong>correlación negativa entre los días de espera y la tasa de asistencia</strong>. Esto demuestra cuantitativamente que <strong>a mayor tiempo de espera programado, mayor es el riesgo de que el paciente abandone la cita</strong>. Adicionalmente, el resto de variables mostró correlaciones bajas (|r| < 0.35), aportando dimensiones ortogonales e independientes para el clustering."
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 -->
+  <div class="slide-card">
+    <div class="slide-topbar">
+      <div>
+        <span class="slide-num">Diapositiva 06</span>
+        <span class="slide-title">Criterio 3: Calidad de Datos (Nulos y Control de Outliers)</span>
+      </div>
+      <span class="speaker-pill">👤 Steven</span>
+    </div>
+    <div class="slide-body">
+      <div class="context-row">
+        <div class="context-item">
+          <strong>En Pantalla</strong>
+          Gráfico horizontal de nulos (<code>limpieza_nulos_antes.png</code>) y boxplots comparativos Antes vs. Después.
+        </div>
+        <div class="context-item">
+          <strong>Tiempo Asignado</strong>
+          1:15 min | Tono: Riguroso en decisiones de calidad estadística.
+        </div>
+      </div>
+      <div class="speech-box">
+        <div class="speech-title">🎙️ Guion Verbal de Steven:</div>
+        <p class="speech-text">
+          "En la fase de calidad y limpieza garantizamos integridad completa: el dataset no presentó nulos estructurales, conservando la totalidad de los <strong>97,546 pacientes</strong> sin pérdida de registros. Respecto a los valores atípicos en gasto y frecuencia, tomamos una decisión fundamentada en el negocio: <strong>no eliminamos filas</strong>, ya que representan pacientes oncológicos o cardiovasculares reales de alta complejidad. En su lugar, aplicamos una <strong>Winsorización por Capping IQR</strong> en los umbrales de Tukey. Como evidencian los boxplots comparativos de 'Antes vs. Después', esto estabilizó las colas extremas sin sesgar la realidad clínica."
+        </p>
+      </div>
+      <div class="transition-cue">
+        🗣️ <strong>Frase de Pase de Steven:</strong> "Para continuar, <strong>le paso la palabra a mi siguiente compañero</strong>."
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ======================================================= -->
+  <!-- EXPOSITOR 4: DANIEL (DIAPOSITIVAS 7 Y 8)                -->
+  <!-- ======================================================= -->
+
+  <!-- SLIDE 7 -->
+  <div class="slide-card">
+    <div class="slide-topbar">
+      <div>
+        <span class="slide-num">Diapositiva 07</span>
+        <span class="slide-title">Criterio 3: Preprocesamiento: Estandarización con StandardScaler</span>
+      </div>
+      <span class="speaker-pill">👤 Daniel</span>
+    </div>
+    <div class="slide-body">
+      <div class="context-row">
+        <div class="context-item">
+          <strong>En Pantalla</strong>
+          Gráfico de densidades post-escalamiento (<code>escalamiento_distribuciones.png</code>) y ecuación Z-score.
+        </div>
+        <div class="context-item">
+          <strong>Tiempo Asignado</strong>
+          1:00 min | Tono: Matemático y explicativo.
+        </div>
+      </div>
+      <div class="speech-box">
+        <div class="speech-title">🎙️ Guion Verbal (Daniel se presenta al inicio):</div>
+        <p class="speech-text">
+          "Buenas noches a todos, <strong>mi nombre es Daniel</strong>. Dado que nuestras 10 variables operan en escalas heterogéneas —por ejemplo, el gasto en cientos de soles frente a ratios entre 0 y 1—, el escalamiento era indispensable. De omitirlo, el cálculo de distancias euclidianas en K-Means habría sido dominado arbitrariamente por las magnitudes monetarias. Aplicamos la transformación <strong>StandardScaler</strong>, llevando cada variable a <strong>media cero y varianza unitaria (Z-score)</strong>. La gráfica de distribuciones post-escalamiento corrobora que todas las dimensiones ingresan al modelo con paridad matemática e idéntico peso geométrico."
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8 -->
+  <div class="slide-card">
+    <div class="slide-topbar">
+      <div>
+        <span class="slide-num">Diapositiva 08</span>
+        <span class="slide-title">Criterio 4: Modelado No Supervisado: Determinación del K Óptimo</span>
+      </div>
+      <span class="speaker-pill">👤 Daniel</span>
+    </div>
+    <div class="slide-body">
+      <div class="context-row">
+        <div class="context-item">
+          <strong>En Pantalla</strong>
+          Gráficos de Inercia y Silueta (<code>clustering_metodo_codo_silueta.png</code>) + Dendrograma Ward.
+        </div>
+        <div class="context-item">
+          <strong>Tiempo Asignado</strong>
+          1:30 min | Tono: Sólido, defendiendo la convergencia de las 3 métricas.
+        </div>
+      </div>
+      <div class="speech-box">
+        <div class="speech-title">🎙️ Guion Verbal de Daniel:</div>
+        <p class="speech-text">
+          "Para determinar el hiperparámetro K no asumimos valores arbitrarios; realizamos una <strong>triangulación cuantitativa entre tres métodos</strong>: en primer lugar, el <strong>Método del Codo</strong> muestra un punto de inflexión pronunciado en la inercia intra-clúster (WCSS) exactamente en <strong>K = 4</strong>. En segundo lugar, la curva del <strong>Coeficiente de Silueta</strong> valida esta partición al maximizar la cohesión y separación inter-grupo. En tercer lugar, el <strong>Dendrograma de Clustering Jerárquico</strong> con enlace de Ward confirma que la línea de corte horizontal a mayor distancia separa a la población de forma natural en <strong>cuatro ramas maestras</strong>, ratificando K = 4 con absoluta consistencia."
+        </p>
+      </div>
+      <div class="transition-cue">
+        🗣️ <strong>Frase de Pase de Daniel:</strong> "Ahora, <strong>le paso la palabra a mi siguiente compañera</strong>."
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ======================================================= -->
+  <!-- EXPOSITOR 5: ROSA (DIAPOSITIVAS 9 Y 10)                 -->
+  <!-- ======================================================= -->
+
+  <!-- SLIDE 9 -->
+  <div class="slide-card">
+    <div class="slide-topbar">
+      <div>
+        <span class="slide-num">Diapositiva 09</span>
+        <span class="slide-title">Criterio 4: Proyección 2D con PCA y Separabilidad Espacial</span>
+      </div>
+      <span class="speaker-pill">👤 Rosa</span>
+    </div>
+    <div class="slide-body">
+      <div class="context-row">
+        <div class="context-item">
+          <strong>En Pantalla</strong>
+          Dispersión 2D con PCA (<code>clustering_segmentacion_pca_2d.png</code>), centroides con 'X' roja y varianza.
+        </div>
+        <div class="context-item">
+          <strong>Tiempo Asignado</strong>
+          1:15 min | Tono: Visual y seguro.
+        </div>
+      </div>
+      <div class="speech-box">
+        <div class="speech-title">🎙️ Guion Verbal (Rosa se presenta al inicio):</div>
+        <p class="speech-text">
+          "Buenas noches con todos, <strong>mi nombre es Rosa</strong>. Para validar y visualizar la geometría de los grupos redujimos las 10 dimensiones a dos componentes principales mediante <strong>PCA</strong>. El <strong>Componente Principal 1</strong> condensa el <strong>Eje de Complejidad y Gasto Clínico</strong> (citas acumuladas, gasto y diversidad médica), mientras que el <strong>Componente Principal 2</strong> refleja el <strong>Eje de Cumplimiento vs. Ausentismo</strong> (asistencia efectiva frente a demoras). Como se aprecia en la gráfica, los 4 grupos presentan una delimitación espacial nítida y los centroides marcados con la 'X' roja demuestran que el algoritmo convergió en particiones equilibradas y bien diferenciadas."
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10 -->
+  <div class="slide-card">
+    <div class="slide-topbar">
+      <div>
+        <span class="slide-num">Diapositiva 10</span>
+        <span class="slide-title">Criterio 4: Arquetipos de Pacientes y Estrategia Hospitalaria</span>
+      </div>
+      <span class="speaker-pill">👤 Rosa</span>
+    </div>
+    <div class="slide-body">
+      <div class="context-row">
+        <div class="context-item">
+          <strong>En Pantalla</strong>
+          Tabla de perfiles (<code>clustering_tabla_perfilamiento.png</code>) y tarjetas con las 4 estrategias.
+        </div>
+        <div class="context-item">
+          <strong>Tiempo Asignado</strong>
+          1:45 min | Tono: Estratégico, orientado a la toma de decisiones.
+        </div>
+      </div>
+      <div class="speech-box">
+        <div class="speech-title">🎙️ Guion Verbal de Rosa:</div>
+        <p class="speech-text">
+          "El valor principal de la analítica es orientar la toma de decisiones. A partir de los centroides caracterizamos <strong>cuatro arquetipos de pacientes</strong>:
+          <br>• <strong>Clúster 0 - Crónicos de Alta Complejidad:</strong> Adultos mayores con más de 10 citas anuales y alto gasto. Propuesta: paquetizar citas el mismo día y asignarles un gestor de caso clínico.
+          <br>• <strong>Clúster 1 - Preventivos y Esporádicos Cumplidos:</strong> Consultas puntuales con asistencia superior al 90%. Propuesta: gestión ágil en canales de autoservicio.
+          <br>• <strong>Clúster 2 - Críticos en Riesgo de Ausentismo (No-Show):</strong> Pacientes con esperas mayores a 25 días y muy baja asistencia. <strong>Es nuestro grupo prioritario:</strong> proponemos recordatorios automáticos por WhatsApp y sobre-asignación controlada (overbooking) para que los consultorios nunca queden vacíos.
+          <br>• <strong>Clúster 3 - Nativos Digitales:</strong> Jóvenes con alta adopción de teleconsulta. Propuesta: incentivarlos hacia la atención virtual para descongestionar la infraestructura física."
+        </p>
+      </div>
+      <div class="transition-cue">
+        🗣️ <strong>Frase de Pase de Rosa:</strong> "Para concluir con la presentación, <strong>le paso la palabra a mi siguiente compañera</strong>."
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- ======================================================= -->
+  <!-- EXPOSITOR 6: BRILLITE (DIAPOSITIVAS 11 Y 12)             -->
+  <!-- ======================================================= -->
+
+  <!-- SLIDE 11 -->
+  <div class="slide-card">
+    <div class="slide-topbar">
+      <div>
+        <span class="slide-num">Diapositiva 11</span>
+        <span class="slide-title">Conclusiones del Avance 1 e Impacto Futuro (Hacia el Avance 2)</span>
+      </div>
+      <span class="speaker-pill">👤 Brillite</span>
+    </div>
+    <div class="slide-body">
+      <div class="context-row">
+        <div class="context-item">
+          <strong>En Pantalla</strong>
+          3 Conclusiones principales del Avance 1 y el diagrama hacia el Avance 2 (Modelos Supervisados).
+        </div>
+        <div class="context-item">
+          <strong>Tiempo Asignado</strong>
+          1:15 min | Tono: Concluyente y visionario.
+        </div>
+      </div>
+      <div class="speech-box">
+        <div class="speech-title">🎙️ Guion Verbal (Brillite se presenta al inicio):</div>
+        <p class="speech-text">
+          "Buenas noches, profesor y jurado, <strong>mi nombre es Brillite</strong>. En conclusión de este Avance 1: primero, demostramos empíricamente que la población del Hospital María Auxiliadora no es homogénea y responde a cuatro perfiles operativamente diferenciables. Segundo, confirmamos que el tiempo de espera prolongado es la causa raíz del ausentismo. Estos resultados sientan las bases directas para el <strong>Avance 2</strong>: utilizaremos la etiqueta del clúster obtenida hoy como una variable predictiva clave para entrenar clasificadores supervisados como <strong>Random Forest y XGBoost</strong>. Así construiremos un <strong>Sistema de Alerta Temprana</strong> que prediga en tiempo real la probabilidad de inasistencia antes de que la cita médica se pierda."
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12 -->
+  <div class="slide-card">
+    <div class="slide-topbar">
+      <div>
+        <span class="slide-num">Diapositiva 12</span>
+        <span class="slide-title">Cierre Institucional y Sesión de Preguntas</span>
+      </div>
+      <span class="speaker-pill">👤 Brillite</span>
+    </div>
+    <div class="slide-body">
+      <div class="context-row">
+        <div class="context-item">
+          <strong>En Pantalla</strong>
+          Mensaje de agradecimiento, firmas de los 6 integrantes y logotipo del curso.
+        </div>
+        <div class="context-item">
+          <strong>Tiempo Asignado</strong>
+          0:30 min | Tono: Agradecido, profesional y cordial.
+        </div>
+      </div>
+      <div class="speech-box">
+        <div class="speech-title">🎙️ Guion Verbal de Brillite:</div>
+        <p class="speech-text">
+          "Agradecemos su atención y el espacio brindado por la cátedra para exponer este trabajo analítico. En nombre de todo nuestro equipo de trabajo, quedamos a su entera disposición para responder a las preguntas y recomendaciones del profesor y del jurado evaluador. ¡Muchas gracias!"
+        </p>
+      </div>
+      <div class="jury-box">
+        <div class="jury-title">💡 Estrategia para la Ronda de Preguntas del Equipo:</div>
+        <p class="jury-a">Si el docente hace preguntas técnicas, el integrante que expuso ese criterio debe tomar la iniciativa de responder para evidenciar dominio grupal equitativo.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
